@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- IMPORTANT: Mobile responsiveness -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>A Song For You 🎧</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Background -->
+    <div class="background">
+      <div class="stars"></div>
+      <div class="glow glow-one"></div>
+      <div class="glow glow-two"></div>
+    </div>
+
+    <!-- ============================= -->
+    <!-- PAGE 1 -->
+    <!-- ============================= -->
+
+    <main class="page active" id="page1">
+      <div class="page-content">
+        <div class="small-label">✦ A little something for you</div>
+
+        <h1>
+          I have a song<br />
+          I really <span>love...</span>
+        </h1>
+
+        <p class="intro-text">
+          But for some reason,<br />
+          today I wanted you<br />
+          to hear it.
+        </p>
+
+        <div class="floating-heart">♥</div>
+
+        <button class="main-btn next-btn" data-next="page2">
+          <span>🎧</span>
+          Show me the song
+        </button>
+
+        <p class="tiny-text">Just give me 3 minutes.</p>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- PAGE 2 -->
+    <!-- ============================= -->
+
+    <main class="page" id="page2">
+      <div class="page-content">
+        <div class="small-label">✦ THE REVEAL</div>
+
+        <h2>
+          My Favourite<br />
+          <span>Song</span>
+        </h2>
+
+        <div class="song-card">
+          <img src="media/song-cover.jpg" alt="Song cover" class="song-cover" />
+
+          <div class="song-info">
+            <h3>Tum Ho</h3>
+            <p>Mohit Chauhan, Suzanne D'Mello</p>
+          </div>
+
+          <div class="mini-heart">♥</div>
+        </div>
+
+        <p class="message">
+          I don't know if you'll like it...
+          <br />
+          but I hope you'll understand
+          <br />
+          why I chose this one.
+        </p>
+
+        <button class="main-btn next-btn" data-next="page3">
+          <span>▶</span>
+          Play it
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- PAGE 3 -->
+    <!-- ============================= -->
+
+    <main class="page video-page" id="page3">
+      <div class="video-content">
+        <div class="video-header">
+          <p class="now-playing">NOW PLAYING</p>
+
+          <h2>Tum Ho</h2>
+
+          <p>Mohit Chauhan, Suzanne D'Mello</p>
+        </div>
+
+        <div class="video-wrapper">
+          <video id="songVideo" playsinline preload="metadata">
+            <source src="media/favourite-song.mp4" type="video/mp4" />
+
+            Your browser does not support video.
+          </video>
+
+          <button class="video-play" id="videoPlay">▶</button>
+        </div>
+
+        <!-- Custom controls -->
+
+        <div class="player-controls">
+          <div class="progress-container" id="progressContainer">
+            <div class="progress" id="progress"></div>
+          </div>
+
+          <div class="control-row">
+            <button id="backBtn">↶</button>
+
+            <button class="big-play" id="mainPlay">▶</button>
+
+            <button id="forwardBtn">↷</button>
+          </div>
+
+          <div class="volume-row">
+            <span>🔈</span>
+
+            <input
+              type="range"
+              id="volume"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.25"
+            />
+
+            <span>🔊</span>
+          </div>
+        </div>
+
+        <p class="listen-text">🎧 Listen to this part...</p>
+
+        <button class="text-btn next-btn" data-next="page4">
+          I've listened →
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- PAGE 4 -->
+    <!-- ============================= -->
+
+    <main class="page" id="page4">
+      <div class="page-content">
+        <div class="huge-heart">♥</div>
+
+        <h2>
+          That was...
+          <br />
+          <span>beautiful.</span>
+        </h2>
+
+        <p class="message">
+          So... now you know
+          <br />
+          my favourite song.
+
+          <br /><br />
+
+          But there's actually
+          <br />
+          a reason I wanted
+          <br />
+          you to hear it.
+        </p>
+
+        <button class="main-btn next-btn" data-next="page5">
+          Okay... tell me 👀
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- PAGE 5 -->
+    <!-- ============================= -->
+
+    <main class="page" id="page5">
+      <div class="page-content">
+        <div class="quote-mark">“</div>
+
+        <p class="story-text">
+          Some songs are
+          <br />
+          just songs.
+
+          <br /><br />
+
+          And then there are
+          <br />
+          songs that somehow
+          <br />
+          <span>remind you of a person.</span>
+
+          <br /><br />
+
+          This one started
+          <br />
+          reminding me of
+          <br />
+          <strong>you.</strong>
+        </p>
+
+        <div class="scroll-hint">↓</div>
+
+        <button class="text-btn next-btn" data-next="page6">
+          There's more...
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- PAGE 6 -->
+    <!-- ============================= -->
+
+    <main class="page" id="page6">
+      <div class="page-content">
+        <div class="soft-heart">♥</div>
+
+        <p class="story-text">
+          Not because of
+          <br />
+          the lyrics...
+
+          <br /><br />
+
+          Just because it has
+          <br />
+          the same kind of
+          <br />
+          <span>feeling</span>
+
+          <br />
+
+          I get when I spend
+          <br />
+          time with <strong>you.</strong>
+        </p>
+
+        <p class="small-note">
+          Thank you for being
+          <br />
+          such an amazing
+          <br />
+          part of my life.
+        </p>
+
+        <button class="main-btn next-btn" data-next="page7">
+          One last thing →
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- PAGE 7 -->
+    <!-- ============================= -->
+
+    <main class="page" id="page7">
+      <div class="page-content">
+        <div class="sparkles">✦ ✧ ✦</div>
+
+        <h2>
+          And that's it...
+          <br />
+          <span>✨</span>
+        </h2>
+
+        <p class="message">
+          I'm glad I got to share
+          <br />
+          one of my favourite songs
+          <br />
+          with <strong>you.</strong>
+        </p>
+
+        <div class="huge-heart">♥</div>
+
+        <button class="main-btn next-btn" data-next="page8">
+          One more thing...
+        </button>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- PAGE 8 -->
+    <!-- ============================= -->
+
+    <main class="page" id="page8">
+      <div class="page-content">
+        <div class="music-notes">♪ ♫ ♪</div>
+
+        <h2>
+          Now I want
+          <br />
+          to know...
+        </h2>
+
+        <h1 class="question">
+          What's <span>YOUR</span>
+          <br />
+          favourite song?
+        </h1>
+
+        <div class="input-container">
+          <input
+            type="text"
+            id="favoriteSong"
+            placeholder="Type your song..."
+            maxlength="100"
+          />
+
+          <span>🎵</span>
+        </div>
+
+        <button class="main-btn" id="saveSong">Save my answer ❤️</button>
+
+        <p class="response" id="response"></p>
+
+        <p class="tiny-text">I can't wait to hear it! 🥰</p>
+      </div>
+    </main>
+
+    <!-- ============================= -->
+    <!-- MUSIC / AMBIENCE -->
+    <!-- ============================= -->
+
+    <div class="music-indicator" id="musicIndicator">♪</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

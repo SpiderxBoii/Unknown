@@ -1,0 +1,934 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: radial-gradient(
+    circle at 50% 20%,
+    #24142e 0%,
+    #090b18 45%,
+    #03040a 100%
+  );
+
+  color: #ffffff;
+
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+.glow {
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  opacity: 0.25;
+}
+
+.glow-one {
+  top: 10%;
+  left: -150px;
+
+  background: #ff3f91;
+}
+
+.glow-two {
+  bottom: -150px;
+  right: -120px;
+
+  background: #753cff;
+}
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 80% 20%, white, transparent),
+    radial-gradient(1px 1px at 40% 70%, white, transparent),
+    radial-gradient(1px 1px at 70% 80%, white, transparent),
+    radial-gradient(1px 1px at 10% 90%, white, transparent);
+
+  background-size: 220px 220px;
+
+  animation: starMove 25s linear infinite;
+
+  opacity: 0.55;
+}
+
+@keyframes starMove {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-220px);
+  }
+}
+
+/* =========================================
+   PAGE SYSTEM
+========================================= */
+
+.page {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: max(25px, env(safe-area-inset-top)) 20px
+    max(25px, env(safe-area-inset-bottom)) 20px;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: scale(1.04) translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    visibility 0.7s;
+
+  overflow-y: auto;
+}
+
+.page.active {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: scale(1) translateY(0);
+}
+
+.page-content {
+  width: 100%;
+
+  max-width: 650px;
+
+  text-align: center;
+
+  margin: auto;
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.small-label {
+  font-size: 11px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  opacity: 0.55;
+
+  margin-bottom: 28px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Caveat", cursive;
+
+  font-weight: 500;
+}
+
+h1 {
+  font-size: clamp(45px, 10vw, 82px);
+
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: clamp(42px, 9vw, 70px);
+
+  line-height: 1;
+
+  margin-bottom: 25px;
+}
+
+h1 span,
+h2 span,
+.story-text span,
+.question span {
+  color: #ff5c9d;
+
+  text-shadow: 0 0 25px rgba(255, 92, 157, 0.5);
+}
+
+.intro-text {
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(23px, 5vw, 32px);
+
+  line-height: 1.35;
+
+  margin-top: 30px;
+
+  opacity: 0.85;
+}
+
+.message {
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(21px, 5vw, 30px);
+
+  line-height: 1.45;
+
+  opacity: 0.85;
+
+  margin: 20px auto 30px;
+}
+
+.tiny-text {
+  font-family: "Caveat", cursive;
+
+  font-size: 18px;
+
+  opacity: 0.55;
+
+  margin-top: 16px;
+}
+
+/* =========================================
+   HEART
+========================================= */
+
+.floating-heart {
+  font-size: 25px;
+
+  color: #ff5c9d;
+
+  margin: 25px;
+
+  animation: heartFloat 2.5s ease-in-out infinite;
+
+  text-shadow: 0 0 20px #ff5c9d;
+}
+
+@keyframes heartFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.huge-heart {
+  font-size: clamp(55px, 15vw, 110px);
+
+  color: #ff4e96;
+
+  text-shadow:
+    0 0 30px rgba(255, 78, 150, 0.8),
+    0 0 80px rgba(255, 78, 150, 0.4);
+
+  animation: heartPulse 1.8s infinite;
+
+  margin: 20px 0 30px;
+}
+
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.main-btn {
+  border: none;
+
+  padding: 16px 30px;
+
+  min-height: 54px;
+
+  border-radius: 100px;
+
+  background: linear-gradient(135deg, #ff3f8e, #c73b83);
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 35px rgba(255, 63, 142, 0.25);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.main-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 15px 45px rgba(255, 63, 142, 0.4);
+}
+
+.main-btn:active {
+  transform: scale(0.95);
+}
+
+.text-btn {
+  border: none;
+
+  background: none;
+
+  color: #ff76aa;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  padding: 12px;
+}
+
+/* =========================================
+   SONG CARD
+========================================= */
+
+.song-card {
+  position: relative;
+
+  width: min(80vw, 340px);
+
+  margin: 15px auto 25px;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.4);
+}
+
+.song-cover {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+}
+
+.song-info {
+  padding: 15px;
+}
+
+.song-info h3 {
+  font-size: 28px;
+}
+
+.song-info p {
+  font-size: 13px;
+
+  opacity: 0.6;
+}
+
+.mini-heart {
+  position: absolute;
+
+  top: 15px;
+
+  right: 15px;
+
+  width: 38px;
+
+  height: 38px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  color: #ff5c9d;
+}
+
+/* =========================================
+   VIDEO PAGE
+========================================= */
+
+.video-content {
+  width: 100%;
+
+  max-width: 850px;
+
+  margin: auto;
+}
+
+.video-header {
+  text-align: center;
+
+  margin-bottom: 15px;
+}
+
+.now-playing {
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  opacity: 0.45;
+
+  margin-bottom: 5px;
+}
+
+.video-header h2 {
+  font-size: clamp(30px, 6vw, 50px);
+
+  margin: 0;
+}
+
+.video-header p:last-child {
+  opacity: 0.55;
+
+  font-size: 13px;
+}
+
+.video-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 850px;
+
+  margin: auto;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #000;
+
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.6);
+}
+
+video {
+  display: block;
+
+  width: 100%;
+
+  max-height: 55vh;
+
+  object-fit: contain;
+
+  background: black;
+}
+
+.video-play {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 65px;
+  height: 65px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: rgba(255, 72, 144, 0.9);
+
+  color: white;
+
+  font-size: 23px;
+
+  cursor: pointer;
+
+  transition: opacity 0.3s;
+}
+
+.video-play.hidden {
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   PLAYER CONTROLS
+========================================= */
+
+.player-controls {
+  max-width: 700px;
+
+  margin: 15px auto;
+}
+
+.progress-container {
+  width: 100%;
+
+  height: 5px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.progress {
+  width: 0%;
+
+  height: 100%;
+
+  background: #ff5c9d;
+
+  box-shadow: 0 0 10px #ff5c9d;
+}
+
+.control-row {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 35px;
+
+  margin: 15px 0;
+}
+
+.control-row button {
+  border: none;
+
+  background: none;
+
+  color: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
+}
+
+.big-play {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  background: #ed4b8f !important;
+
+  box-shadow: 0 5px 25px rgba(237, 75, 143, 0.35);
+}
+
+.volume-row {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  max-width: 250px;
+
+  margin: auto;
+}
+
+.volume-row input {
+  width: 130px;
+
+  accent-color: #ff5c9d;
+}
+
+.listen-text {
+  font-family: "Caveat", cursive;
+
+  color: #ff76aa;
+
+  font-size: 23px;
+
+  margin: 15px;
+}
+
+/* =========================================
+   STORY
+========================================= */
+
+.quote-mark {
+  font-family: Georgia, serif;
+
+  font-size: 90px;
+
+  line-height: 0.5;
+
+  color: #ff5c9d;
+
+  opacity: 0.7;
+}
+
+.story-text {
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(26px, 6vw, 40px);
+
+  line-height: 1.3;
+}
+
+.story-text strong {
+  color: #ff76aa;
+}
+
+.small-note {
+  font-family: "Caveat", cursive;
+
+  font-size: 21px;
+
+  opacity: 0.65;
+
+  margin: 25px auto;
+}
+
+.scroll-hint {
+  margin: 25px;
+
+  color: #ff5c9d;
+
+  animation: arrowMove 1.5s infinite;
+}
+
+@keyframes arrowMove {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* =========================================
+   FINAL QUESTION
+========================================= */
+
+.question {
+  font-size: clamp(42px, 10vw, 75px);
+
+  margin: 10px auto 30px;
+}
+
+.music-notes {
+  font-size: 28px;
+
+  color: #ff5c9d;
+
+  letter-spacing: 15px;
+
+  margin-bottom: 15px;
+}
+
+.input-container {
+  width: min(90vw, 500px);
+
+  height: 58px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 18px;
+
+  border-radius: 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(15px);
+}
+
+.input-container input {
+  flex: 1;
+
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: none;
+
+  color: white;
+
+  font-size: 15px;
+}
+
+.input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.response {
+  font-family: "Caveat", cursive;
+
+  font-size: 25px;
+
+  color: #ff76aa;
+
+  margin-top: 20px;
+
+  min-height: 30px;
+}
+
+/* =========================================
+   MUSIC INDICATOR
+========================================= */
+
+.music-indicator {
+  position: fixed;
+
+  right: 15px;
+
+  bottom: max(15px, env(safe-area-inset-bottom));
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #ff5c9d;
+
+  opacity: 0.6;
+}
+
+/* =========================================
+   RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .page {
+    padding: 35px 18px 35px 18px;
+  }
+
+  .page-content {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(43px, 13vw, 65px);
+  }
+
+  h2 {
+    font-size: clamp(40px, 12vw, 60px);
+  }
+
+  .intro-text {
+    font-size: 24px;
+  }
+
+  .message {
+    font-size: 21px;
+  }
+
+  .main-btn {
+    width: min(90vw, 330px);
+
+    padding: 15px 20px;
+  }
+
+  .song-card {
+    width: min(82vw, 310px);
+  }
+
+  .video-page {
+    padding: 20px 12px 30px 12px;
+  }
+
+  .video-wrapper {
+    border-radius: 12px;
+  }
+
+  video {
+    max-height: 42vh;
+  }
+
+  .control-row {
+    gap: 25px;
+  }
+
+  .story-text {
+    font-size: clamp(25px, 7vw, 34px);
+  }
+
+  .question {
+    font-size: clamp(39px, 11vw, 60px);
+  }
+}
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-height: 650px) {
+  .small-label {
+    margin-bottom: 15px;
+  }
+
+  .intro-text {
+    margin-top: 15px;
+  }
+
+  .floating-heart {
+    margin: 12px;
+  }
+
+  .song-card {
+    width: min(60vw, 260px);
+
+    margin-bottom: 12px;
+  }
+
+  .message {
+    margin: 10px auto 15px;
+  }
+
+  .huge-heart {
+    margin: 10px 0 15px;
+
+    font-size: 65px;
+  }
+}
+
+/* =========================================
+   LANDSCAPE MOBILE
+========================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .page {
+    align-items: flex-start;
+
+    padding-top: 20px;
+  }
+
+  .page-content {
+    padding-bottom: 30px;
+  }
+
+  h1,
+  h2 {
+    font-size: 45px;
+  }
+
+  .song-card {
+    width: 200px;
+  }
+
+  .video-wrapper {
+    max-height: 65vh;
+  }
+
+  video {
+    max-height: 60vh;
+  }
+}
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+  }
+}
