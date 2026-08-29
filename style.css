@@ -932,3 +932,11 @@ video {
     scroll-behavior: auto !important;
   }
 }
+
+.artist-name {
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+}
